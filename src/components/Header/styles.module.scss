@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-weight: 300;
+    line-height: 40px;
+    margin-left: 1rem;
+    font-size: 1.75rem;
+    color: var(--white);
+  }
+
+  &.dark {
+    span {
+      color: var(--gray800);
+    }
+
+    svg path {
+      fill: var(--gray800);
+    }
+  }
+}

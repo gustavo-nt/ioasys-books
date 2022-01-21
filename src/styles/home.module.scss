@@ -1,0 +1,28 @@
+.container {
+  background: url('../../public/login-background.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+
+  .content {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1260px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    form {
+      display: flex;
+      margin-top: 3rem;
+      width: max-content;
+      flex-direction: column;
+      position: relative;
+      gap: 16px;
+    }
+  }
+}
