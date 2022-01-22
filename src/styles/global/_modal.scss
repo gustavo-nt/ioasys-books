@@ -1,0 +1,84 @@
+.react-modal-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  inset: 0 0 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal-content {
+  width: 100%;
+  max-width: 772px;
+
+  background: black;
+  padding: 3rem;
+
+  margin: 0 1rem;
+  position: relative;
+  border-radius: 0.24rem;
+
+  &.appointment {
+    max-width: 532px;
+    height: 90%;
+    overflow: auto;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: red;
+      border-radius: 10px;
+    }
+  }
+
+  &.profile {
+    max-height: 90%;
+    overflow: auto;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: red;
+      border-radius: 10px;
+    }
+  }
+}
+
+.react-modal-close {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  border: 0;
+
+  transition: filter .2s;
+  background: transparent;
+
+  svg {
+    color: white
+  }
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}

@@ -7,6 +7,8 @@
 :root {
   --white: #FFF;
   --gray800: #333333;
+  --pink700: #B22E6F;
+  --transparent: transparent;
 }
 
 body {
@@ -14,7 +16,7 @@ body {
 }
 
 body, input, textarea, button {
-  font: 400 1rem 'Heebo', sans-serif;
+  font: 400 16px 'Heebo', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +28,5 @@ button {
   cursor: pointer;
 }
 
-.hd {
-  display: none;
-}
+@import './global/_modal';
+@import './global/_animations';

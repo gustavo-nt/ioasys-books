@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useAuth } from '../hooks/auth';
+import { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Header } from '../components/Header';
 import { Input } from '../components/Input';
+import { Warning } from '../components/Warning';
+import { ButtonLogin } from '../components/Button/Login';
 
-import styles from '../styles/home.module.scss';
+import styles from '../styles/pages/home.module.scss';
 
 type SignInFormData = {
   email?: string;
@@ -13,19 +17,36 @@ type SignInFormData = {
 }
 
 const Home: NextPage = () => {
+  const { signIn, getRefreshToken } = useAuth();
   const { register, handleSubmit, formState } = useForm({});
+  const [isVisibleMessageError, setIsVisibleMessageError] = useState<boolean>(false);
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(values)
+    setIsVisibleMessageError(false);
+
+    try {
+      if (values.email && values.password) {
+        await signIn({
+          email: values.email,
+          password: values.password,
+        });
+      }
+    } catch (err) {
+      console.log(err)
+      setIsVisibleMessageError(true);
+    }
   }
+
+  useEffect(() => {
+    getRefreshToken();
+  }, [getRefreshToken])
 
   return (
     <>
       <Head>
         <title>ioasys Books | Login</title>
-        <meta name="description" content="Faça login no site" />
-        <meta property="og:title" content="ioasys Books - Sua loja de livros" />
+        <meta name='description' content='Faça login no site' />
+        <meta property='og:title' content='ioasys Books - Sua loja de livros' />
       </Head>
 
       <div className={styles.container}>
@@ -36,18 +57,26 @@ const Home: NextPage = () => {
             onSubmit={handleSubmit(handleSignIn)}
           >
             <Input 
-              type="email" 
-              label="Email"
+              type='email' 
+              label='Email'
               {...register('email')}
             />
 
             <Input 
-              type="password" 
-              label="Senha" 
+              type='password' 
+              label='Senha' 
               {...register('password')}
             />
 
-            <button type='submit'>Entrar</button>
+            <ButtonLogin 
+              type='submit' 
+              label='Entrar'
+              isLoading={formState.isSubmitting} 
+            />
+
+            <Warning 
+              label='Email e/ou senha incorretos.' 
+              isVisible={isVisibleMessageError} />
           </form>
         </main>
       </div>

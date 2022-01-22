@@ -1,12 +1,13 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   span {
+    font-size: 28px;
     font-weight: 300;
     line-height: 40px;
-    margin-left: 1rem;
-    font-size: 1.75rem;
+    margin-left: 16px;
     color: var(--white);
   }
 
@@ -17,6 +18,27 @@
 
     svg path {
       fill: var(--gray800);
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .welcomeUser {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--gray800);
+    }
+
+    button {
+      margin-left: 16px;
     }
   }
 }

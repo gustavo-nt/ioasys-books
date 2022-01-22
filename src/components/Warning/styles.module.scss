@@ -1,0 +1,36 @@
+.container {
+  padding: 16px;
+  margin-top: 24px;
+  line-height: 16px;
+  width: max-content;
+  border-radius: 4px;
+  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.4);
+
+  position: absolute;
+  bottom: -72px;
+  left: 0;
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--white);
+  }
+
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 0; 
+    width: 0; 
+    
+    position: absolute;
+    left: 17px;
+    top: -8px;
+  
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 255, 255, 0.4);
+  }
+}

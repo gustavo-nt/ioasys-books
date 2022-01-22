@@ -1,5 +1,5 @@
 .container {
-  background: url('../../public/login-background.png') no-repeat center center fixed; 
+  background: url('../../../public/images/login-background.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -10,7 +10,8 @@
   .content {
     height: 100%;
     margin: 0 auto;
-    max-width: 1260px;
+    padding: 0 16px;
+    max-width: 1151px;
     
     display: flex;
     flex-direction: column;
@@ -18,11 +19,25 @@
 
     form {
       display: flex;
-      margin-top: 3rem;
+      margin-top: 48px;
       width: max-content;
       flex-direction: column;
       position: relative;
       gap: 16px;
+
+      button {
+        position: absolute;
+        min-width: 85.14px;
+        bottom: 12px;
+        right: 12px;
+      }
     }
+  }
+}
+
+// Responsive
+@media screen and (max-width: 420px) { 
+  .container .content form {
+    width: 100%;
   }
 }
