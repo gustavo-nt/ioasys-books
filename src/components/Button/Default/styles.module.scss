@@ -3,7 +3,7 @@
   outline: none;
   line-height: 0px;
   border-radius: 100px;
-  background-color: transparent;
+  background-color: var(--transparent);
   border: 1px solid rgba(51, 51, 51, 0.2);
   transition: background-color .2s ease-in-out 0s;
 
@@ -12,10 +12,19 @@
     color: var(--gray800);
   }
 
+  &.oi {
+    background-color: red;
+  }
+
   &:not(:disabled) {
     &:hover {
       background-color: rgba(51, 51, 51, 0.2);
     }
+  }
+
+  &.disableHover {
+    background: red;
+    background-color: var(--transparent);
   }
 
   &:disabled {

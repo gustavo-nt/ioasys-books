@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 12px;
+    line-height: 21px;
+
+    &:first-child {
+      font-weight: 500;
+      color: var(--gray800);
+    }
+
+    &:last-child {
+      font-weight: normal;
+      color: var(--gray600);
+    }
+  }
+}

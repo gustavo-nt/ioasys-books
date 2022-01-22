@@ -1,4 +1,4 @@
-import { Button } from "./Default";
-import { ButtonLogin } from "./Login";
+import { Button } from './Default';
+import { ButtonLogin } from './Login';
 
 export { Button, ButtonLogin };

@@ -11,19 +11,19 @@
     color: var(--white);
   }
 
-  &.dark {
-    span {
-      color: var(--gray800);
-    }
-
-    svg path {
-      fill: var(--gray800);
-    }
-  }
-
   .logo {
     display: flex;
     align-items: center;
+
+    &.dark {
+      span {
+        color: var(--gray800);
+      }
+  
+      svg path {
+        fill: var(--gray800);
+      }
+    }
   }
 
   .welcomeUser {

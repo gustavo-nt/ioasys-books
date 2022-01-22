@@ -5,7 +5,7 @@ interface WarningProps {
   isVisible: boolean;
 }
 
-export const Warning = ({ label, isVisible }: WarningProps) => {
+export const Tooltip = ({ label, isVisible }: WarningProps) => {
   return (
     <div 
       className={`${styles.container} ${isVisible && 'fadeIn'}`}

@@ -6,10 +6,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Header } from '../components/Header';
 import { Input } from '../components/Input';
-import { Warning } from '../components/Warning';
+import { Tooltip } from '../components/Tooltip';
 import { ButtonLogin } from '../components/Button/Login';
 
 import styles from '../styles/pages/home.module.scss';
+import { Modal } from '../components/Modal';
 
 type SignInFormData = {
   email?: string;
@@ -19,6 +20,8 @@ type SignInFormData = {
 const Home: NextPage = () => {
   const { signIn, getRefreshToken } = useAuth();
   const { register, handleSubmit, formState } = useForm({});
+
+  const [isOpenModal, setIsOpenModal] = useState(true);
   const [isVisibleMessageError, setIsVisibleMessageError] = useState<boolean>(false);
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
@@ -32,9 +35,16 @@ const Home: NextPage = () => {
         });
       }
     } catch (err) {
-      console.log(err)
       setIsVisibleMessageError(true);
     }
+  }
+
+  const handleOpenModal = () => {
+    setIsOpenModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
   }
 
   useEffect(() => {
@@ -54,6 +64,7 @@ const Home: NextPage = () => {
           <Header />
 
           <form 
+            noValidate
             onSubmit={handleSubmit(handleSignIn)}
           >
             <Input 
@@ -74,10 +85,15 @@ const Home: NextPage = () => {
               isLoading={formState.isSubmitting} 
             />
 
-            <Warning 
+            <Tooltip 
               label='Email e/ou senha incorretos.' 
               isVisible={isVisibleMessageError} />
           </form>
+
+          <Modal 
+            isOpen={isOpenModal} 
+            onRequestClose={handleCloseModal}
+          />  
         </main>
       </div>
     </>

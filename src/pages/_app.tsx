@@ -1,4 +1,4 @@
-import Modal from "react-modal";
+import Modal from 'react-modal';
 import type { AppProps } from 'next/app';
 import { AuthProvider } from '../hooks/auth';
 
