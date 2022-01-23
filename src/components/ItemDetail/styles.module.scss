@@ -9,12 +9,12 @@
 
     &:first-child {
       font-weight: 500;
-      color: var(--gray800);
+      color: var(--gray-dark);
     }
 
     &:last-child {
       font-weight: normal;
-      color: var(--gray600);
+      color: var(--gray-light);
     }
   }
 }

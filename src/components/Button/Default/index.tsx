@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, ReactElement } from 'react';
-import styles from './styles.module.scss';
+import { ButtonHTMLAttributes, ReactElement } from "react";
+import styles from "./styles.module.scss";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hover?: boolean;
@@ -7,10 +7,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactElement;
 }
 
-export const Button = ({ hover = true, disabled = false, children, ...rest }: ButtonProps) => {
+export const Button = ({
+  hover = true,
+  disabled = false,
+  children,
+  ...rest
+}: ButtonProps) => {
   return (
-    <button 
-      style={!hover ? { background: 'white' } : {}}
+    <button
+      style={!hover ? { background: "#FFF" } : {}}
       className={styles.button}
       disabled={disabled}
       {...rest}
@@ -18,4 +23,4 @@ export const Button = ({ hover = true, disabled = false, children, ...rest }: Bu
       {children}
     </button>
   );
-}
+};

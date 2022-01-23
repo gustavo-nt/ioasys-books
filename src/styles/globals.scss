@@ -5,30 +5,52 @@
 }
 
 :root {
-  --white: #FFF;
-  --gray600: #999999;
-  --gray800: #333333;
-  --pink800: #AB2680;
-  --pink700: #B22E6F;
+  --white: #ffffff;
+  --black: #000000;
   --transparent: transparent;
+
+  --gray-dark: #333333;
+  --gray-light: #999999;
+
+  --pink-dark: #ab2680;
+  --pink-light: #b22e6f;
+
+  --black15: rgba(0, 0, 0, 0.15);
+  --black32: rgba(0, 0, 0, 0.32);
+  --black40: rgba(0, 0, 0, 0.4);
+
+  --purple13: rgba(84, 16, 95, 0.13);
+  --purple32: rgba(84, 16, 95, 0.32);
+
+  --white40: rgba(255, 255, 255, 0.4);
+  --gray-dark20: rgba(51, 51, 51, 0.2);
+  --gray-dark40: rgba(51, 51, 51, 0.4);
 }
 
 body {
   background: var(--white);
 }
 
-body, input, textarea, button {
-  font: 400 16px 'Heebo', sans-serif;
+body,
+input,
+textarea,
+button {
+  font: 400 16px "Heebo", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
 }
 
 button {
   cursor: pointer;
 }
 
-@import './global/_modal';
-@import './global/_animations';
+@import "./global/_modal";
+@import "./global/_animations";

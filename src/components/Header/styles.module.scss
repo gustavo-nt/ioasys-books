@@ -14,15 +14,15 @@
   .logo {
     display: flex;
     align-items: center;
+  }
 
-    &.dark {
-      span {
-        color: var(--gray800);
-      }
-  
-      svg path {
-        fill: var(--gray800);
-      }
+  &.dark {
+    span {
+      color: var(--gray-dark);
+    }
+
+    .logo svg path {
+      fill: var(--gray-dark);
     }
   }
 
@@ -34,7 +34,7 @@
       font-size: 12px;
       font-weight: 500;
       line-height: 16px;
-      color: var(--gray800);
+      color: var(--gray-dark);
     }
 
     button {

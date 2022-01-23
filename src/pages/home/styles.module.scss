@@ -1,0 +1,59 @@
+.container {
+  background: url('/images/home-background.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 16px;
+  padding-top: 40px;
+  max-width: 1135px;
+  
+  display: flex;
+  flex-direction: column;
+
+  .loading {
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cards {
+    gap: 16px;
+    display: grid;
+    margin-top: 40px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 602px) {
+  .content .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 902px) {
+  .content .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1135px) {
+  .content {
+    padding: 0;
+    padding-top: 40px;
+
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

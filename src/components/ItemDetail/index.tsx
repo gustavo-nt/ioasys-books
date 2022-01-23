@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 interface ItemDetailPros {
   title: string;
@@ -12,4 +12,4 @@ export const ItemDetail = ({ title, label }: ItemDetailPros) => {
       <span>{label}</span>
     </div>
   );
-}
+};

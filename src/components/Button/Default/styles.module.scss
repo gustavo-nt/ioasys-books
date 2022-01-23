@@ -4,34 +4,25 @@
   line-height: 0px;
   border-radius: 100px;
   background-color: var(--transparent);
-  border: 1px solid rgba(51, 51, 51, 0.2);
+  border: 1px solid var(--gray-dark20);
   transition: background-color .2s ease-in-out 0s;
 
   svg {
     font-size: 16px;
-    color: var(--gray800);
-  }
-
-  &.oi {
-    background-color: red;
+    color: var(--gray-dark);
   }
 
   &:not(:disabled) {
     &:hover {
-      background-color: rgba(51, 51, 51, 0.2);
+      background-color: var(--gray-dark20);
     }
-  }
-
-  &.disableHover {
-    background: red;
-    background-color: var(--transparent);
   }
 
   &:disabled {
     cursor: not-allowed;
 
     svg {
-      color: rgba(51, 51, 51, 0.4);
+      color: var(--gray-dark40);
     }
   }
 }

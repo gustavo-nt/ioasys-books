@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 interface WarningProps {
   label?: string;
@@ -7,15 +7,11 @@ interface WarningProps {
 
 export const Tooltip = ({ label, isVisible }: WarningProps) => {
   return (
-    <div 
-      className={`${styles.container} ${isVisible && 'fadeIn'}`}
+    <div
+      className={`${styles.container} ${isVisible && "fadeIn"}`}
       style={isVisible ? { opacity: 1 } : { opacity: 0 }}
-    > 
-      {label ? (
-        <span>{label}</span>
-      ) : (
-        <span>Ops...tente novamente!</span>
-      )}
+    >
+      {label ? <span>{label}</span> : <span>Ops...tente novamente!</span>}
     </div>
   );
-}
+};

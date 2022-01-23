@@ -1,5 +1,5 @@
 .react-modal-overlay {
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--black40);
   position: fixed;
   inset: 0 0 0 0;
 
@@ -9,7 +9,7 @@
 }
 
 // Responsive
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
   .react-modal-overlay {
     align-items: flex-start;
   }
