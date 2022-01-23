@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-    🚀 </> ioasys-books.
+    🚀 </> ioasys Books
 </h1>
 <p align="center">Aplicação de livros</p>
 
