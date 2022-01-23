@@ -5,7 +5,7 @@
 <h1 align="center">
     🚀 </> ioasys Books
 </h1>
-<p align="center">Aplicação de livros</p>
+<p align="center">Aplicação para detalhamento de Livros</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/react%20version-17.0.2-informational"/>
