@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/gustavo-nt/ignite-spacetraveling/blob/master/public/logo-github.svg" alt="Spacetraveling" />
+  <img src="https://github.com/gustavo-nt/ioasys-books/blob/main/public/images/logo-github.svg" alt="ioasys Books" />
 </p>
 
 <h1 align="center">
