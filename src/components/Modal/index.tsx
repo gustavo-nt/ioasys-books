@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactModal from "react-modal";
 
 import { Button } from "../Button";
@@ -8,6 +8,7 @@ import { RiCloseFill } from "react-icons/ri";
 import api from "../../services/api";
 import styles from "./styles.module.scss";
 import Image from "next/image";
+import { Loading } from "../Loading";
 
 interface ModalProps {
   idBook: string;
@@ -31,14 +32,17 @@ interface BookProps {
 }
 
 export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
-  const [detailsBook, setDetailsBook] = useState<BookProps>();
+  const [detailsBook, setDetailsBook] = useState<BookProps>({} as BookProps);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
+
     async function getCurrentBook() {
       try {
         const response = await api.get(`/books/${idBook}`);
         setDetailsBook(response.data);
-        console.log(response);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -47,56 +51,79 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
     getCurrentBook();
   }, [idBook]);
 
+  const handleCloseModal = useCallback(() => {
+    onRequestClose();
+  }, [onRequestClose]);
+
   return (
     <ReactModal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={handleCloseModal}
       overlayClassName="react-modal-overlay"
-      className={`${styles.container} react-modal-content`}
+      className={`${styles.container} ${styles.overflow} react-modal-content`}
     >
       <Button type="button" hover={false} onClick={onRequestClose}>
         <RiCloseFill />
       </Button>
 
-      <div className={styles.content}>
-        <div className={styles.img}>
-          <Image
-            src="/images/default.png"
-            layout="fixed"
-            width={349}
-            height={513}
-            alt={detailsBook?.title}
-          />
+      {isLoading ? (
+        <div className={styles.loading}>
+          <Loading />
         </div>
-        <div className={styles.details}>
-          <h2>Change By Design Second line example teste</h2>
-          <span>Tim Brown, Julie Zhuo, Fried Maximiilian</span>
-
-          <div className={styles.info}>
-            <h3>Informações</h3>
-            <ItemDetail title="Páginas" label="304 páginas" />
-            <ItemDetail title="Editora" label="Editora Loyola" />
-            <ItemDetail title="Publicação" label="2020" />
-            <ItemDetail title="Idioma" label="Inglês" />
-            <ItemDetail title="Título Original" label="Change By Design" />
-            <ItemDetail title="ISBN-10" label="0062856626" />
-            <ItemDetail title="ISBN-13" label="978-0062856623" />
+      ) : (
+        <div className={styles.content}>
+          <div className={styles.img}>
+            {detailsBook.imageUrl ? (
+              <Image
+                src={detailsBook.imageUrl}
+                layout="fixed"
+                width={349}
+                height={513}
+                alt={detailsBook?.title}
+              />
+            ) : (
+              <Image
+                src="/images/default.png"
+                layout="fixed"
+                width={349}
+                height={513}
+                alt={detailsBook?.title}
+              />
+            )}
           </div>
+          <div className={`${styles.details} ${styles.overflow}`}>
+            <h2>{detailsBook.title}</h2>
 
-          <div className={styles.summary}>
-            <h3>Resenha da Editora</h3>
-            <p>
-              <q>
-                Hazel foi diagnosticada com câncer aos treze anos e agora, aos
-                dezesseis, sobrevive graças a uma droga revolucionária que detém
-                a metástase em seus pulmões. Ela sabe que sua doença é terminal
-                e passa os dias vendo tevê e lendo Uma aflição imperial, livro
-                cujo autor deixou muitas perguntas sem resposta.
-              </q>
-            </p>
+            <span>
+              {detailsBook.authors ? (
+                <span>{detailsBook.authors.join(", ")}</span>
+              ) : (
+                <span>Autor(es) desconhecido(s)</span>
+              )}
+            </span>
+
+            <div className={styles.info}>
+              <h3>Informações</h3>
+
+              <ItemDetail title="Páginas" label={detailsBook.pageCount} />
+              <ItemDetail title="Editora" label={detailsBook.publisher} />
+              <ItemDetail title="Publicação" label={detailsBook.published} />
+              <ItemDetail title="Idioma" label={detailsBook.language} />
+              <ItemDetail title="Título Original" label={detailsBook.title} />
+              <ItemDetail title="ISBN-10" label={detailsBook.isbn10} />
+              <ItemDetail title="ISBN-13" label={detailsBook.isbn13} />
+            </div>
+
+            <div className={styles.summary}>
+              <h3>Resenha da Editora</h3>
+
+              <p>
+                <q>{detailsBook.description}</q>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </ReactModal>
   );
 };

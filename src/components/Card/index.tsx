@@ -45,7 +45,7 @@ export const Card = ({ book, ...rest }: CardProps) => {
           {authors.length > 2 ? (
             <>
               <span>{authors[0]}</span>
-              <span>e outros {authors.length - 1} autores</span>
+              <span>e mais {authors.length - 1} autores</span>
             </>
           ) : authors.length >= 1 ? (
             <>

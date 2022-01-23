@@ -71,11 +71,13 @@ const Home: NextPage = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    document.body.style.overflow = "unset";
   };
 
   const handleOpenModal = (id: string) => {
     setShowModal(true);
     setCurrentBook(id);
+    document.body.style.overflow = "hidden";
   };
 
   return (

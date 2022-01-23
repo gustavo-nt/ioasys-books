@@ -1,11 +1,11 @@
 .container {
-  background: url('/images/home-background.png') no-repeat center center fixed; 
+  background: url("/images/home-background.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .content {
@@ -13,7 +13,7 @@
   padding: 0 16px;
   padding-top: 40px;
   max-width: 1135px;
-  
+
   display: flex;
   flex-direction: column;
 
@@ -31,29 +31,24 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 602px) {
+  .content .cards {
     grid-template-columns: 1fr;
   }
 }
 
-@media (min-width: 602px) {
+@media screen and (max-width: 902px) and (min-width: 602px) {
   .content .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 902px) {
+@media screen and (max-width: 1135px) and (min-width: 902px) {
   .content .cards {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1135px) {
-  .content {
-    padding: 0;
-    padding-top: 40px;
-
-    .cards {
-      grid-template-columns: repeat(4, 1fr);
-    }
   }
 }

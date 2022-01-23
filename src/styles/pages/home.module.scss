@@ -4,8 +4,8 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .content {
@@ -35,7 +35,6 @@
   }
 }
 
-// Responsive
 @media screen and (max-width: 420px) {
   .content form {
     width: 100%;

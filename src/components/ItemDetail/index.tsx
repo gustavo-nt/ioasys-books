@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 interface ItemDetailPros {
   title: string;
-  label: string;
+  label: string | number;
 }
 
 export const ItemDetail = ({ title, label }: ItemDetailPros) => {

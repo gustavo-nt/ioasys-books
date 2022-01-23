@@ -25,6 +25,7 @@
 }
 
 .content {
+  text-align: left;
   margin-left: 20px;
 
   p,
@@ -57,7 +58,7 @@
   .description {
     display: flex;
     flex-direction: column;
-  
+
     span {
       font-size: 12px;
       line-height: 20px;

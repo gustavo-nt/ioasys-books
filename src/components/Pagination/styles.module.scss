@@ -3,13 +3,14 @@
   display: flex;
   margin: 16px 0;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   p {
-    order: 2;
-    margin: 0 16px;
+    order: 1;
+    margin-left: 0;
     font-size: 12px;
     line-height: 20px;
+    margin-right: 16px;
     color: var(--gray-dark);
   }
 
@@ -20,19 +21,18 @@
 
     &:last-child {
       order: 3;
-      margin-right: 8px;
+      margin-left: 8px;
     }
   }
 }
 
-@media (min-width: 602px) {
+@media screen and (max-width: 602px) {
   .container {
-    justify-content: flex-end;
+    justify-content: center;
 
     p {
-      order: 1;
-      margin-left: 0;
-      margin-right: 16px;
+      order: 2;
+      margin: 0 16px;
     }
 
     button {
@@ -40,8 +40,8 @@
         order: 1;
       }
 
-      & + button {
-        margin-left: 8px;
+      &:last-child {
+        margin-left: 0;
       }
     }
   }
