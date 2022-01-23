@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
 
 import api from '../../services/api';
-import { useAuth } from '../../hooks/auth';
 
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
-import { Loading } from '../../components/Loading';
+import { Skeleton } from '../../components/Loading';
 import { Modal } from '../../components/Modal';
 import { Pagination } from '../../components/Pagination';
 
@@ -93,19 +93,23 @@ const Home: NextPage = () => {
           <Header mode="dark" />
 
           {isLoading ? (
-            <div className={styles.loading}>
-              <Loading />
-            </div>
-          ) : (
             <div className={styles.cards}>
-              {books.map(book => (
-                <Card
-                  onClick={() => handleOpenModal(book.id)}
-                  key={book.id}
-                  book={book}
-                />
+              {new Array(12).fill('').map((value, index) => (
+                <Skeleton key={index} />
               ))}
             </div>
+          ) : (
+            <>
+              <div className={styles.cards}>
+                {books.map(book => (
+                  <Card
+                    onClick={() => handleOpenModal(book.id)}
+                    key={book.id}
+                    book={book}
+                  />
+                ))}
+              </div>
+            </>
           )}
 
           <Pagination

@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
+import Image from 'next/image';
 
 import { Button } from '../Button';
+import { LoadingModal } from '../Loading';
 import { ItemDetail } from '../ItemDetail';
 import { RiCloseFill } from 'react-icons/ri';
 
 import api from '../../services/api';
 import styles from './styles.module.scss';
-import Image from 'next/image';
-import { Loading } from '../Loading';
 
 interface ModalProps {
   idBook: string;
@@ -33,7 +33,7 @@ interface BookProps {
 
 export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
   const [detailsBook, setDetailsBook] = useState<BookProps>({} as BookProps);
-  const [widthWindow, setWidthWindow] = useState<number>();
+  const [widthWindow, setWidthWindow] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -50,15 +50,17 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
       }
     }
 
-    function handleResize() {
-      const { innerWidth: width } = window;
-      setWidthWindow(width);
-    }
-
+    handleResize();
     getCurrentBook();
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [idBook]);
+
+  const handleResize = () => {
+    const { innerWidth: width } = window;
+    setWidthWindow(width);
+  };
 
   const handleCloseModal = useCallback(() => {
     onRequestClose();
@@ -82,7 +84,7 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
 
       {isLoading ? (
         <div className={styles.loading}>
-          <Loading />
+          <LoadingModal />
         </div>
       ) : (
         <div className={styles.content}>

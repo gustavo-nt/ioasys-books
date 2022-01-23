@@ -11,6 +11,7 @@
 
   --gray-dark: #333333;
   --gray-light: #999999;
+  --gray-extra-light: #dddbdd;
 
   --pink-dark: #ab2680;
   --pink-light: #b22e6f;
@@ -35,7 +36,7 @@ body,
 input,
 textarea,
 button {
-  font: 400 16px "Heebo", sans-serif;
+  font: 400 16px 'Heebo', sans-serif;
 }
 
 h1,
@@ -45,12 +46,12 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
 }
 
 button {
   cursor: pointer;
 }
 
-@import "./global/_modal";
-@import "./global/_animations";
+@import './global/_modal';
+@import './global/_fadeIn';

@@ -1,6 +1,7 @@
-import { ButtonHTMLAttributes } from "react";
-import { LoadingLogin } from "../../Loading/Login";
-import styles from "./styles.module.scss";
+import { ButtonHTMLAttributes } from 'react';
+import { LoadingLogin } from '../../Loading/Login';
+
+import styles from './styles.module.scss';
 
 interface ButtonLoginProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;

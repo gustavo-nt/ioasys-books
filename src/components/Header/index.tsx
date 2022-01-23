@@ -1,12 +1,12 @@
+import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/auth';
+import { useEffect, useState } from 'react';
+
 import { Button } from '../Button/Default';
 import { FiLogOut } from 'react-icons/fi';
 import Logo from '../../../public/images/logo.svg';
 
-import { useRouter } from 'next/router';
-import { useAuth } from '../../hooks/auth';
-
 import styles from './styles.module.scss';
-import { useEffect, useState } from 'react';
 
 interface HeaderProps {
   mode?: string;

@@ -1,4 +1,5 @@
-import { Loading } from './Default';
+import { Skeleton } from './Skeleton';
+import { LoadingModal } from './Modal';
 import { LoadingLogin } from './Login';
 
-export { Loading, LoadingLogin };
+export { LoadingModal, Skeleton, LoadingLogin };
