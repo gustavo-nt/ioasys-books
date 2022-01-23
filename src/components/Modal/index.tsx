@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
-import ReactModal from "react-modal";
+import { useCallback, useEffect, useState } from 'react';
+import ReactModal from 'react-modal';
 
-import { Button } from "../Button";
-import { ItemDetail } from "../ItemDetail";
-import { RiCloseFill } from "react-icons/ri";
+import { Button } from '../Button';
+import { ItemDetail } from '../ItemDetail';
+import { RiCloseFill } from 'react-icons/ri';
 
-import api from "../../services/api";
-import styles from "./styles.module.scss";
-import Image from "next/image";
-import { Loading } from "../Loading";
+import api from '../../services/api';
+import styles from './styles.module.scss';
+import Image from 'next/image';
+import { Loading } from '../Loading';
 
 interface ModalProps {
   idBook: string;
@@ -33,6 +33,7 @@ interface BookProps {
 
 export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
   const [detailsBook, setDetailsBook] = useState<BookProps>({} as BookProps);
+  const [widthWindow, setWidthWindow] = useState<number>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -44,11 +45,19 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
         setDetailsBook(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        handleCloseModal();
+        console.warn(error);
       }
     }
 
+    function handleResize() {
+      const { innerWidth: width } = window;
+      setWidthWindow(width);
+    }
+
     getCurrentBook();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [idBook]);
 
   const handleCloseModal = useCallback(() => {
@@ -62,7 +71,12 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
       overlayClassName="react-modal-overlay"
       className={`${styles.container} ${styles.overflow} react-modal-content`}
     >
-      <Button type="button" hover={false} onClick={onRequestClose}>
+      <Button
+        type="button"
+        aria-label="Fechar modal"
+        hover={false}
+        onClick={onRequestClose}
+      >
         <RiCloseFill />
       </Button>
 
@@ -77,16 +91,16 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
               <Image
                 src={detailsBook.imageUrl}
                 layout="fixed"
-                width={349}
-                height={513}
+                width={widthWindow > 468 ? 349 : 240}
+                height={widthWindow > 468 ? 513 : 351}
                 alt={detailsBook?.title}
               />
             ) : (
               <Image
                 src="/images/default.png"
                 layout="fixed"
-                width={349}
-                height={513}
+                width={widthWindow > 468 ? 349 : 240}
+                height={widthWindow > 468 ? 513 : 351}
                 alt={detailsBook?.title}
               />
             )}
@@ -96,7 +110,7 @@ export const Modal = ({ idBook, isOpen, onRequestClose }: ModalProps) => {
 
             <span>
               {detailsBook.authors ? (
-                <span>{detailsBook.authors.join(", ")}</span>
+                <span>{detailsBook.authors.join(', ')}</span>
               ) : (
                 <span>Autor(es) desconhecido(s)</span>
               )}

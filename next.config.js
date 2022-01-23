@@ -3,6 +3,6 @@ module.exports = {
   esModule: true,
   reactStrictMode: true,
   images: {
-    domains: ['d2drtqy2ezsot0.cloudfront.net'],
+    domains: ["d2drtqy2ezsot0.cloudfront.net"],
   },
 };

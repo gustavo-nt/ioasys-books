@@ -1,5 +1,5 @@
 .container {
-  background: url("/images/home-background.png") no-repeat center center fixed;
+  background: url('/images/home-background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -9,8 +9,8 @@
 }
 
 .content {
+  padding: 0;
   margin: 0 auto;
-  padding: 0 16px;
   padding-top: 40px;
   max-width: 1135px;
 
@@ -36,19 +36,34 @@
 }
 
 @media screen and (max-width: 602px) {
-  .content .cards {
-    grid-template-columns: 1fr;
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    .cards {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
 @media screen and (max-width: 902px) and (min-width: 602px) {
-  .content .cards {
-    grid-template-columns: repeat(2, 1fr);
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
 @media screen and (max-width: 1135px) and (min-width: 902px) {
-  .content .cards {
-    grid-template-columns: repeat(3, 1fr);
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

@@ -1,7 +1,7 @@
-import { Button } from "../Button";
-import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
+import { Button } from '../Button';
+import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 interface PaginationProps {
   totalPages: number;
@@ -25,12 +25,13 @@ export const Pagination = ({
   return (
     <div className={styles.container}>
       <p>
-        Página <strong>{currentPage}</strong> de{" "}
+        Página <strong>{currentPage}</strong> de{' '}
         <strong>{Math.floor(totalPages)}</strong>
       </p>
 
       <Button
         type="button"
+        aria-label="Retornar página"
         onClick={handlePrevPage}
         disabled={currentPage - 1 === 0}
       >
@@ -39,6 +40,7 @@ export const Pagination = ({
 
       <Button
         type="button"
+        aria-label="Avançar página"
         onClick={handleNextPage}
         disabled={currentPage + 1 > Math.floor(totalPages)}
       >

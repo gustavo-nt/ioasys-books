@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { ButtonHTMLAttributes } from "react";
-import styles from "./styles.module.scss";
+import Image from 'next/image';
+import { ButtonHTMLAttributes } from 'react';
+import styles from './styles.module.scss';
 
 interface BookProps {
   title: string;
@@ -18,6 +18,7 @@ interface CardProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Card = ({ book, ...rest }: CardProps) => {
   const { authors, published, title, pageCount, imageUrl, publisher } = book;
+
   return (
     <button className={styles.container} {...rest}>
       <div className={styles.image}>
@@ -40,7 +41,7 @@ export const Card = ({ book, ...rest }: CardProps) => {
         )}
       </div>
       <div className={styles.content}>
-        <h2 className={styles.title}>{title ?? "Livro desconhecido"}</h2>
+        <h2 className={styles.title}>{title ?? 'Livro desconhecido'}</h2>
         <div className={styles.authors}>
           {authors.length > 2 ? (
             <>
@@ -49,7 +50,7 @@ export const Card = ({ book, ...rest }: CardProps) => {
             </>
           ) : authors.length >= 1 ? (
             <>
-              {authors.map((author) => (
+              {authors.map(author => (
                 <span key={author}>{author}</span>
               ))}
             </>

@@ -88,7 +88,7 @@
 
     q {
       &::before {
-        quotes: "“" "”";
+        quotes: '“' '”';
         font-size: 45px;
         font-family: -webkit-body;
         color: var(--gray-light);
@@ -132,7 +132,6 @@
   }
 }
 
-// Responsive
 @media screen and (max-width: 768px) {
   .container {
     padding: 24px;
@@ -151,12 +150,19 @@
     flex-direction: column;
 
     .details {
-      max-height: auto;
       padding-right: 0;
+      max-height: initial;
     }
   }
 
   .loading {
     padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .content .img {
+    min-width: 240px;
+    min-height: 351px;
   }
 }

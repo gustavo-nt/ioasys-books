@@ -2,8 +2,8 @@ import {
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes,
-} from "react";
-import styles from "./styles.module.scss";
+} from 'react';
+import styles from './styles.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -12,10 +12,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { name, label, ...rest },
-  ref
+  ref,
 ) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} aria-label={label}>
       {!!label && <label htmlFor={name}>{label}</label>}
 
       <input title={name} name={name} id={name} ref={ref} {...rest} />

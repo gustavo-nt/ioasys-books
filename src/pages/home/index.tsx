@@ -1,18 +1,18 @@
-import Head from "next/head";
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import Head from 'next/head';
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-import api from "../../services/api";
-import { useAuth } from "../../hooks/auth";
+import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
-import { Card } from "../../components/Card";
-import { Header } from "../../components/Header";
-import { Loading } from "../../components/Loading";
-import { Modal } from "../../components/Modal";
-import { Pagination } from "../../components/Pagination";
+import { Card } from '../../components/Card';
+import { Header } from '../../components/Header';
+import { Loading } from '../../components/Loading';
+import { Modal } from '../../components/Modal';
+import { Pagination } from '../../components/Pagination';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 interface BookProps {
   title: string;
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [currentBook, setCurrentBook] = useState("");
+  const [currentBook, setCurrentBook] = useState('');
   const [books, setBooks] = useState<Array<BookProps>>([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
       try {
         await getRefreshToken();
 
-        const { data } = await api.get("/books", {
+        const { data } = await api.get('/books', {
           params: {
             page,
             amount: 12,
@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         setTotalPages(data.totalPages);
       } catch (error) {
         signOut();
-        router.push("/");
+        router.push('/');
       }
     }
 
@@ -65,19 +65,19 @@ const Home: NextPage = () => {
 
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = 'unset';
   };
 
   const handleOpenModal = (id: string) => {
     setShowModal(true);
     setCurrentBook(id);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
 
   return (
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
             </div>
           ) : (
             <div className={styles.cards}>
-              {books.map((book) => (
+              {books.map(book => (
                 <Card
                   onClick={() => handleOpenModal(book.id)}
                   key={book.id}

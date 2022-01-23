@@ -4,7 +4,7 @@
   justify-content: center;
 
   &:after {
-    content: "";
+    content: '';
     width: 16px;
     height: 16px;
     display: block;
@@ -16,18 +16,6 @@
     -moz-animation: spin 1.2s linear infinite;
     -o-animation: spin 1.2s linear infinite;
     animation: spin 1.2s linear infinite;
-  }
-
-  span {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    clip: rect(0, 0, 0, 0);
   }
 
   @keyframes spin {
