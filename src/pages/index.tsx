@@ -1,16 +1,16 @@
-import Head from "next/head";
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useAuth } from "../hooks/auth";
-import { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import Head from 'next/head';
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useAuth } from '../hooks/auth';
+import { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Header } from "../components/Header";
-import { Input } from "../components/Input";
-import { Tooltip } from "../components/Tooltip";
-import { ButtonLogin } from "../components/Button/Login";
+import { Header } from '../components/Header';
+import { Input } from '../components/Input';
+import { Tooltip } from '../components/Tooltip';
+import { ButtonLogin } from '../components/Button/Login';
 
-import styles from "../styles/pages/home.module.scss";
+import styles from '../styles/pages/home.module.scss';
 
 type SignInFormData = {
   email?: string;
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   const [isVisibleMessageError, setIsVisibleMessageError] =
     useState<boolean>(false);
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
+  const handleSignIn: SubmitHandler<SignInFormData> = async values => {
     setIsVisibleMessageError(false);
 
     try {
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           password: values.password,
         });
 
-        router.push("/home");
+        router.push('/home');
       }
     } catch (err) {
       setIsVisibleMessageError(true);
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
     async function checkLogin() {
       try {
         await getRefreshToken();
-        router.push("/");
+        router.push('/home');
       } catch (error) {
         signOut();
       }
@@ -66,9 +66,9 @@ const Home: NextPage = () => {
           <Header />
 
           <form noValidate onSubmit={handleSubmit(handleSignIn)}>
-            <Input type="email" label="Email" {...register("email")} />
+            <Input type="email" label="Email" {...register('email')} />
 
-            <Input type="password" label="Senha" {...register("password")} />
+            <Input type="password" label="Senha" {...register('password')} />
 
             <ButtonLogin
               type="submit"
