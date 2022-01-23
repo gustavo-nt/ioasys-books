@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-    🚀 </> spacetraveling.
+    🚀 </> ioasys-books.
 </h1>
 <p align="center">Aplicação de livros</p>
 
@@ -34,11 +34,11 @@
 - [x] Persistência de login 
 
 ### 💻 Projeto
-Spacetraveling é uma aplicação que simula um "workflow" de um blog real, onde as postagens publicadas na aplicação, são feita via o Prismic CMS. Esse Projeto foi desenvolvido como desafio principal da Semana 03 do Bootcamp Ignite.
+ioasys Books é uma aplicação desenvolvida para detalhamento de livros, dados como título, quantidade de páginas, editora, etc.
 
 ### 🖼 Demonstração
 <p>
-   <img src="https://github.com/gustavo-nt/ignite-spacetraveling/blob/master/public/post.png" alt="Post"/>
+   <img src="https://github.com/gustavo-nt/ioasys-books/blob/main/public/images/home.png" alt="Home"/>
 </p>
 
 ### ⚙ Pré-requisitos
