@@ -19,7 +19,7 @@ type SignInFormData = {
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const { signIn, signOut, getRefreshToken } = useAuth();
+  const { signIn, signOut, user } = useAuth();
   const { register, handleSubmit, formState } = useForm({});
   const [isVisibleMessageError, setIsVisibleMessageError] =
     useState<boolean>(false);
@@ -42,23 +42,20 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    async function checkLogin() {
+    function checkLogin() {
       try {
-        await getRefreshToken();
-        router.push('/home');
+        user && router.push('/home');
       } catch (error) {
         signOut();
       }
     }
     checkLogin();
-  }, [getRefreshToken]);
+  }, [user]);
 
   return (
     <>
       <Head>
         <title>ioasys Books | Login</title>
-        <meta name="description" content="Faça login no site" />
-        <meta property="og:title" content="ioasys Books - Sua loja de livros" />
       </Head>
 
       <div className={styles.container}>

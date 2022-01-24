@@ -84,8 +84,6 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>ioasys Books | Home</title>
-        <meta name="description" content="Conheça nossas opções de livors" />
-        <meta property="og:title" content="ioasys Books - Sua loja de livros" />
       </Head>
 
       <div className={styles.container}>
