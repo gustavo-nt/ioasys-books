@@ -64,7 +64,7 @@ $ yarn ou npm dev
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- Next
+- Next.js
 - ReactJS
 - Typescript
 
